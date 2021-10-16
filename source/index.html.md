@@ -12,7 +12,10 @@ includes:
   - introduction
   - authentication
   - cloudInstance
-  - modelFit
+  - fit
+  - job
+  - reportIssue
+  - privacy
 
 search: true
 

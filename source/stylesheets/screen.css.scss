@@ -319,6 +319,7 @@ html, body {
 
 .content {
   // fixes webkit rendering bug for some: see #538
+  transform: translateZ(0);
   -webkit-transform: translateZ(0);
   // to place content above the dark box
   position: relative;

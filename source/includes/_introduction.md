@@ -20,7 +20,12 @@ AIbro is a serverless model training tool that helps data scientists train AI mo
 | ------------------ | ----------------- |
 | Numpy              | 2 GB              |
 
+| Limit                | Amount |
+| -------------------- | ------ |
+| Max Active Jobs      | 2      |
+| Max Active Instances | 2      |
+
 If you need more environment support, please feel free to send us your request through our [website](https://aipaca.ai) or
 <a href = "mailto: hello@aipaca.ai">email</a>.
 
-We are working hard to support more varieties of environment shortly. Thank you for your patience.
+We are working hard to support more varieties of environments shortly. Thank you for your patience.

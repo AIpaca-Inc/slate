@@ -11,9 +11,9 @@ toc_footers:
 includes:
   - introduction
   - authentication
-  - cloudInstance
   - fit
   - job
+  - cloudInstance
   - reportIssue
   - privacy
 

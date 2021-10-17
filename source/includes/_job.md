@@ -2,14 +2,49 @@
 
 ## Job & Instance Status
 
-Once a job starts, it and its instance will experience a series of statuses and substatuses. You can monitor their changes on [AIbro Console](https://aipaca.ai/jobs).
+Once a job starts, it and its instance will experience a series of statuses and substatuses. You can monitor their changes on the [Jobs page of AIbro Console](https://aipaca.ai/jobs).
+
+| Job Status | Description                                           |
+| ---------- | ----------------------------------------------------- |
+| QUEUING    | Waiting for training                                  |
+| TRAINING   | During training process or returning training results |
+| CANCELED   | Canceled due to some errors                           |
+| COMPLETED  | Completed the job                                     |
+
+| Job Substatus        | Description                                     |
+| -------------------- | ----------------------------------------------- |
+| REQUESTING SERVER    | Requesting an instance to train models          |
+| CONNECTING SERVER    | Connecting an initializing instance             |
+| GEARING UP ENV       | Gearing up tensorflow and mounting GPUs         |
+| SENDING MODEL & DATA | Sending model and training data to the instance |
+| TRAINING             | Training model                                  |
+| RETURNING            | Returning trained model                         |
+| CANCELED             | Canceled due to some errors                     |
+| COMPLETED            | Completed the job                               |
+
+| Instance Status | Description                              |
+| --------------- | ---------------------------------------- |
+| LAUNCHING       | Setting up instance for training         |
+| EXECUTING       | Having jobs in training process          |
+| COOLING         | Within [Cooling Period](#cooling-period) |
+| CLOSING         | Stopping/terminating instance            |
+| CLOSED          | instance has been stopped/terminated     |
+
+| Instance Substatus     | Description                                                                                                                |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| STOPPING/STOPPED       | Shut down instance but retain root volume [Reference](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html) |
+| TERMINATING/TERMINATED | Completely delete the instance [Reference](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html) |
+
+In the AIbro usage case, [Setup speed](#setup-speed) is the main advantage of stopped instance over terminated instance.
+
+The following table is a status-substatus map of jobs and instances.
 
 | Job Status | Job Substatus        | Instance Status        | Instance Substatus                                    |
 | ---------- | -------------------- | ---------------------- | ----------------------------------------------------- |
 | QUEUING    | REQUESTING SERVER    |                        |                                                       |
 | QUEUING    | CONNECTING SERVER    | LAUNCHING              |                                                       |
+| QUEUING    | GEARING UP ENV       | LAUNCHING              |                                                       |
 | QUEUING    | SENDING MODEL & DATA | LAUNCHING              |                                                       |
-| QUEUING    | GEARING ENV          | LAUNCHING              |                                                       |
 | ---------- | ------------         | ---------------------- | --------------------------                            |
 | TRAINING   | TRAINING             | EXECUTING              |                                                       |
 | TRAINING   | RETURNING            | EXECUTING              |                                                       |
@@ -35,19 +70,19 @@ The type of chart. If its value is "pie", a pie chart would be plotted. Otherwis
 
 This method can be called anytime even if the job has not been ended.
 
-Timeline shows a little more insights than job status.
+The timeline shows a little more insights than job status.
 
-From the begin to the end, the following time periods are shown on timeline plots:
+From the beginning to the end, the following time periods are shown on timeline plots:
 
 - **Job Create**: time taken from code execution to job creation.
-- **Request Launch**: time taken from a spot request start to fulfilled; this period only applies to spot instance.
+- **Request Launch**: time taken from a spot request start to be fulfilled; this period only applies to spot instance.
 - **Instance Connect**: time taken from request fulfilled to successfully establish instance connection.
 - **API Transfer & Server Setup**: time taken to set up AIbro API infrastructure in the instance.
 - **M&D Serialization**: time taken to serialize model and training data.
 - **Env Gear up**: time taken to gear up tensorflow.
 - **M&D Transfer**: time taken to transfer model and training data from your local machine to the instance.
 - **M&D Deserialization**: time taken to deserialize model and training data.
-- **Model Training**: time taken to training the model.
+- **Model Training**: time taken to train the model.
 - **Result Serialization**: time taken to serialize the trained model and other relevant objects.
 - **Result Transfer**: time taken to transfer the trained model and other relevant objects.
 
@@ -65,7 +100,7 @@ def replay_job(
 )
 ```
 
-Once you submitted a recorded job, AIbro team would use _replay_job()_ method to reproduce the issue. You may also use it to check whether your reported issue is reproducable.
+Once you submitted a recorded job, AIbro team would use _replay_job()_ method to reproduce the issue. You may also use it to check whether your reported issue is reproducible.
 
 ### Parameters
 
@@ -82,5 +117,5 @@ The directory used to save checkpoints. Checkpoints are stored by per epoch. If 
 The directory used to save tensorboard log. If `None`, the log file won't be saved in your local machine.
 
 **wait_request_s**: _int = 10000_<br/>
-The amount of seconds to wait instance request to be fulfilled. You probably want to set a long enough time when
+The time in seconds used to wait instance request to be fulfilled. You probably want to set a long enough time when
 requesting a spot instance with low availability.

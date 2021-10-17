@@ -7,12 +7,20 @@ Authentication is required when APIs from [AIbro python library](https://pypi.or
 # Start Your First Training Job on AIbro
 
 <aside class="success">
-Checkout the executable Colab tutorial <a href = "https://colab.research.google.com/drive/19sXZ4kbic681zqEsrl_CZfB5cegUwuIB#forceEdit=true&sandboxMode=true&scrollTo=Et8ivBtkckme"> here</a>
+Play around the executable Colab tutorial <a href = "https://colab.research.google.com/drive/19sXZ4kbic681zqEsrl_CZfB5cegUwuIB#forceEdit=true&sandboxMode=true&scrollTo=Et8ivBtkckme"> here</a>
 </aside>
 
 ## Step 1: Install
 
-`pip instal aibro`
+```python
+pip install aibro
+```
+
+```shell
+pip install aibro
+```
+
+Install [aibro python library](https://pypi.org/project/aibro/) by pip.
 
 ## Step 2: Prepare Model & Data
 
@@ -31,6 +39,8 @@ model.compile ( loss="categorical_crossentropy",
 train_X, train_Y = _get_random_train_data( 10, 224, 224, 3 )
 ```
 
+As an example, we used `MobileNetV2` as the model and a random training data with shape (10, 224, 224, 3). You could plug in custom model and just remember to confirm the model's compilability with [Support Environment](#support-environment).
+
 ## Step 3: Pass Model & Data to AIbro API
 
 ```python
@@ -46,3 +56,7 @@ job_id, result_model, history= online_fit(
     description="my first training job",
 )
 ```
+
+Once the fitting start, you can track the job status on the [Jobs page of AIbro Console](https://aipaca.ai/jobs).
+
+This example used a very basic `online_fit()`. If you would like to explore more features, please check out the [aibro.Fit](#aibro-fit) section for more details.

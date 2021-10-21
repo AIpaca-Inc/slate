@@ -49,7 +49,7 @@ or has no capacity within `wait_request_s` seconds, `g4dn.4xlarge` will be reque
 If `machine_ids` is `None`, a selection message will ask you to select one machine from the AIbro marketplace.
 
 **batch_size**: _int = 1_<br/>
-The training batch size.
+The training batch size. It is recommended to set the value as the multiple of the number of GPUs ([more details](#distributed-training)).
 
 **epochs**: _int = 1_<br/>
 The training epochs.
@@ -114,3 +114,9 @@ In this version, we set the variables as the following:
 | --------------- | ---------- |
 | BASELINE        | 10 minutes |
 | UNIT_PERCENTAGE | 1%         |
+
+## Distributed Training
+
+If a multi-GPUs machine is selected (e.g. p3.8xlarge), AIbro automatically trains your model with all visible GPUs. We use `tf.distribute.MirroredStrategy` ([reference](https://www.tensorflow.org/api_docs/python/tf/distribute/MirroredStrategy)) to implement synchronous training.
+
+MirroredStrategy evenly shards batch data to each GPU. To increase GPU utility, your **batch size** should be the multiple of the number of GPUs. For instance such as p3.8xlarge, `batch_size` should be one of 4, 8, 16 ... because it has 4 V100 GPUs.

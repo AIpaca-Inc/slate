@@ -10,7 +10,7 @@ AIbro is a serverless model training tool that helps data scientists train AI mo
 
 | Framework  | Version |
 | ---------- | ------- |
-| Tensorflow | 2.4.1   |
+| Tensorflow | 2       |
 
 | Cloud Platform | Spot Instance | On-demand Instance |
 | -------------- | ------------- | ------------------ |

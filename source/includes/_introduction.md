@@ -18,10 +18,9 @@ AIbro is a serverless model training tool that helps data scientists train AI mo
 | -------------- | ------------- | ------------------ |
 | AWS            | Yes           | Yes                |
 
-| Training Data Type                                                            | Maximum Data Size |
-| ----------------------------------------------------------------------------- | ----------------- |
-| [NumPy](https://numpy.org/)                                                   | 2 GB              |
-| [tf.data.Dataset](https://www.tensorflow.org/api_docs/python/tf/data/Dataset) | 2 GB              |
+| Training Data Type          | Maximum Data Size |
+| --------------------------- | ----------------- |
+| [NumPy](https://numpy.org/) | 2 GB              |
 
 | Limit                 | Amount |
 | --------------------- | ------ |

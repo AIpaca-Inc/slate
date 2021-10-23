@@ -23,7 +23,7 @@ Install [aibro python library](https://pypi.org/project/aibro/) by pip.
 ```python
 import tensorflow as tf
 from tensorflow import keras
-def get_mnist_data(tf_dataset=False, batch_size=None):
+def get_mnist_data():
     num_val_samples = 100
 
     # Return the MNIST dataset in the form of a [`tf.data.Dataset`]
@@ -41,13 +41,6 @@ def get_mnist_data(tf_dataset=False, batch_size=None):
     y_val = y_train[-num_val_samples:]
     x_train = x_train[:-num_val_samples]
     y_train = y_train[:-num_val_samples]
-    if tf_dataset:
-        return (
-            tf.data.Dataset.from_tensor_slices(x_train).batch(batch_size),
-            tf.data.Dataset.from_tensor_slices(y_train).batch(batch_size),
-            tf.data.Dataset.from_tensor_slices(x_val).batch(batch_size),
-            tf.data.Dataset.from_tensor_slices(y_val).batch(batch_size),
-        )
     return x_train, y_train, x_val, y_val
 
 

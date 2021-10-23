@@ -6,6 +6,8 @@
 def plot_timeline(job_id: str, char_type: str = None)
 ```
 
+This method is used to interpret the time spend of a training job from end-to-end.
+
 ### Parameters
 
 **job_id**: _str_<br/>
@@ -48,7 +50,7 @@ def replay_job(
 )
 ```
 
-Once you submitted a recorded job, AIbro team would use _replay_job()_ method to reproduce the issue. You may also use it to check whether your reported issue is reproducible.
+Once a recorded job is submitted, AIbro team would use _replay_job()_ method to reproduce the issue. You may also use it to check whether the reported issue is reproducible.
 
 ### Parameters
 
@@ -65,12 +67,12 @@ The directory used to save checkpoints. Checkpoints are stored by per epoch. If 
 The directory used to save tensorboard log. If `None`, the log file won't be saved in your local machine.
 
 **wait_request_s**: _int = 10000_<br/>
-The time in seconds used to wait instance request to be fulfilled. You probably want to set a long enough time when
+The time in seconds used to wait instance request to be fulfilled. A long enough `wait_request_s` is helpful when
 requesting a spot instance with low availability.
 
 ## Job & Instance Status
 
-Once a job starts, it and its instance will experience a series of statuses and substatuses. You can monitor their changes on the [Jobs page of AIbro Console](https://aipaca.ai/jobs).
+Once a job starts, its states and substates are updated on the [Jobs page of AIbro Console](https://aipaca.ai/jobs).
 
 | Job Status | Description                                           |
 | ---------- | ----------------------------------------------------- |

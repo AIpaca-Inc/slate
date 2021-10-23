@@ -3,7 +3,6 @@ title: AIbro Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - python
-  - shell
 
 toc_footers:
   - <a href='https://aipaca.ai'>Sign Up to Get Start</a>
@@ -13,6 +12,7 @@ includes:
   - authentication
   - fit
   - job
+  - comm
   - cloudInstance
   - reportIssue
   - privacy

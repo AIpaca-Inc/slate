@@ -1,10 +1,10 @@
 # Authentication
 
-AIbro uses email & password to allow access to the API. You can register an account at our [website](https://aipaca.ai).
+AIbro uses email & password to allow access to the API. Accounts are registered at the AIbro [website](https://aipaca.ai).
 
 Authentication is required when APIs from [AIbro python library](https://pypi.org/project/aibro/) are called for the first time.
 
-# Start Your First Training Job on AIbro
+# Start First Training Job on AIbro
 
 <aside class="success">
 Play around the executable Colab tutorial <a href = "https://colab.research.google.com/drive/19sXZ4kbic681zqEsrl_CZfB5cegUwuIB#forceEdit=true&sandboxMode=true&scrollTo=Et8ivBtkckme"> here</a>
@@ -16,47 +16,81 @@ Play around the executable Colab tutorial <a href = "https://colab.research.goog
 pip install aibro
 ```
 
-```shell
-pip install aibro
-```
-
 Install [aibro python library](https://pypi.org/project/aibro/) by pip.
 
 ## Step 2: Prepare Model & Data
 
 ```python
-import numpy as np
 import tensorflow as tf
-from tensorflow.keras.applications import MobileNetV2
-def _get_random_train_data( s, h, w, c ) :
-    random_x_train = np.random.rand( s, h, w, c )
-    random_y_train = tf.one_hot( [i for i in range(s)], 3 )
-    return random_x_train, random_y_train
+from tensorflow import keras
+def get_mnist_data(tf_dataset=False, batch_size=None):
+    num_val_samples = 100
 
-model = MobileNetV2( weights=None, classes=3 )
-model.compile ( loss="categorical_crossentropy",
-   optimizer="sgd", metrics=["accuracy"] )
-train_X, train_Y = _get_random_train_data( 10, 224, 224, 3 )
+    # Return the MNIST dataset in the form of a [`tf.data.Dataset`]
+    # reference: (https://www.tensorflow.org/api_docs/python/tf/data/Dataset).
+    (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+
+    # Preprocess the data (these are Numpy arrays)
+    x_train = x_train.reshape(-1, 784).astype("float32") / 255
+    x_test = x_test.reshape(-1, 784).astype("float32") / 255
+    y_train = y_train.astype("float32")
+    y_test = y_test.astype("float32")
+
+    # Reserve num_val_samples samples for validation
+    x_val = x_train[-num_val_samples:]
+    y_val = y_train[-num_val_samples:]
+    x_train = x_train[:-num_val_samples]
+    y_train = y_train[:-num_val_samples]
+    if tf_dataset:
+        return (
+            tf.data.Dataset.from_tensor_slices(x_train).batch(batch_size),
+            tf.data.Dataset.from_tensor_slices(y_train).batch(batch_size),
+            tf.data.Dataset.from_tensor_slices(x_val).batch(batch_size),
+            tf.data.Dataset.from_tensor_slices(y_val).batch(batch_size),
+        )
+    return x_train, y_train, x_val, y_val
+
+
+def get_compiled_FFNN_model():
+    # Make a simple 2-layer densely-connected neural network.
+    inputs = keras.Input(shape=(784,))
+    x = keras.layers.Dense(256, activation="relu")(inputs)
+    x = keras.layers.Dense(256, activation="relu")(x)
+    outputs = keras.layers.Dense(10)(x)
+    model = keras.Model(inputs, outputs)
+    model.compile(
+        optimizer=keras.optimizers.Adam(),
+        loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+        metrics=[keras.metrics.SparseCategoricalAccuracy()],
+    )
+    return model
+
+
+train_X, train_Y, validation_X, validation_Y = get_mnist_data()
+model = get_compiled_FFNN_model()
 ```
 
-As an example, we used `MobileNetV2` as the model and a random training data with shape (10, 224, 224, 3). You could plug in custom model and just remember to confirm the model's compilability with [Support Environment](#support-environment).
+As an example, we used a custom feed-forward neural network (FFNN) as the model and [MNIST](https://www.tensorflow.org/api_docs/python/tf/data/Dataset) dataset. You could plug in your own model and just remember to confirm the model's compilability with [Support Environment](#support-environment).
 
-## Step 3: Pass Model & Data to AIbro API
+## Step 3: The Magic One-Line Code
 
 ```python
-from aibro.train import online_fit
+from aibro import Fit
 
-job_id, result_model, history= online_fit(
+job_id, result_model, history= Fit.online_fit(
     model=model,
     train_X=train_X,
     train_Y=train_Y,
-    machine_ids["p2.xlarge", "g4dn.4xlarge.od"],
-    batch_size=1,
+    validation_data=(validation_X, validation_Y),
+    machine_ids["p2.xlarge", "p2.xlarge.od"], #try to get a spot p2.xlarge first, if failed, use its on-demand server
+    batch_size=8,
     epochs=15,
     description="my first training job",
 )
 ```
 
-Once the fitting start, you can track the job status on the [Jobs page of AIbro Console](https://aipaca.ai/jobs).
+Now, it is the time to train the model on cloud with the **one line of code** - `Fit.online_fit()`.
 
-This example used a very basic `online_fit()`. If you would like to explore more features, please check out the [aibro.Fit](#aibro-fit) section for more details.
+Once the job start, job status update will be displayed on the [Jobs page of AIbro Console](https://aipaca.ai/jobs) in real-time.
+
+This example used a basic `online_fit()`. To explore more features, please check out the [aibro.Fit](#aibro-fit) section.

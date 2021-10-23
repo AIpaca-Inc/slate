@@ -1,10 +1,12 @@
 # Introduction
 
-**AIbro Version**: 1.0.0 (alpha)
+**AIbro Version**: 1.0.0 <span style="color:blue;">(alpha)</span>
 
 **Last Documentation Update**: Oct. 16, 2021
 
-AIbro is a serverless model training tool that helps data scientists train AI models on cloud platforms with one line of code.
+**Definition**: API embedded python library
+
+AIbro is a serverless model training tool that helps data scientists train AI models on cloud platforms with [one line of code](#step-3-the-magic-one-line-code).
 
 ## Support Environment
 
@@ -16,16 +18,17 @@ AIbro is a serverless model training tool that helps data scientists train AI mo
 | -------------- | ------------- | ------------------ |
 | AWS            | Yes           | Yes                |
 
-| Training Data Type | Maximum Data Size |
-| ------------------ | ----------------- |
-| Numpy              | 2 GB              |
+| Training Data Type                                                            | Maximum Data Size |
+| ----------------------------------------------------------------------------- | ----------------- |
+| [NumPy](https://numpy.org/)                                                   | 2 GB              |
+| [tf.data.Dataset](https://www.tensorflow.org/api_docs/python/tf/data/Dataset) | 2 GB              |
 
-| Limit                | Amount |
-| -------------------- | ------ |
-| Max Active Jobs      | 2      |
-| Max Active Instances | 2      |
+| Limit                 | Amount |
+| --------------------- | ------ |
+| Max Active Jobs       | 2      |
+| Max Active Instances  | 2      |
+| Max Stopped Instances | 2      |
 
-If you need more environment support, please feel free to send us your request through our [website](https://aipaca.ai) or
-<a href = "mailto: hello@aipaca.ai">email</a>.
+If more environment support is required, please feel free to [Contact Us](#contact-us).
 
 We are working hard to support more varieties of environments shortly. Thank you for your patience.

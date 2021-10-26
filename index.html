@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
-
+    <title>AIbro Documentation</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="source/javascripts/app/_copy.js"></script>
     <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -282,7 +283,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-f2e6280a.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-a9fde460.js"></script>
 
@@ -291,7 +292,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;python&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -299,12 +300,9 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-5db5870f.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -313,281 +311,863 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#support-environment" class="toc-h2 toc-link" data-title="Support Environment">Support Environment</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#start-first-training-job-on-aibro" class="toc-h1 toc-link" data-title="Start First Training Job on AIbro">Start First Training Job on AIbro</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#step-1-install" class="toc-h2 toc-link" data-title="Step 1: Install">Step 1: Install</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#step-2-prepare-model-amp-data" class="toc-h2 toc-link" data-title="Step 2: Prepare Model &amp; Data">Step 2: Prepare Model &amp; Data</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#step-3-the-magic-one-line-code" class="toc-h2 toc-link" data-title="Step 3: The Magic One-Line Code">Step 3: The Magic One-Line Code</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#aibro-fit" class="toc-h1 toc-link" data-title="aibro.Fit">aibro.Fit</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#online_fit" class="toc-h2 toc-link" data-title="online_fit()">online_fit()</a>
+                  </li>
+                  <li>
+                    <a href="#cooling-period" class="toc-h2 toc-link" data-title="Cooling Period">Cooling Period</a>
+                  </li>
+                  <li>
+                    <a href="#distributed-training" class="toc-h2 toc-link" data-title="Distributed Training">Distributed Training</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#aibro-job" class="toc-h1 toc-link" data-title="aibro.Job">aibro.Job</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get_tensorboard_logs" class="toc-h2 toc-link" data-title="get_tensorboard_logs()">get_tensorboard_logs()</a>
+                  </li>
+                  <li>
+                    <a href="#plot_timeline" class="toc-h2 toc-link" data-title="plot_timeline()">plot_timeline()</a>
+                  </li>
+                  <li>
+                    <a href="#replay_job" class="toc-h2 toc-link" data-title="replay_job()">replay_job()</a>
+                  </li>
+                  <li>
+                    <a href="#job-amp-instance-status" class="toc-h2 toc-link" data-title="Job &amp; Instance Status">Job &amp; Instance Status</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#aibro-comm" class="toc-h1 toc-link" data-title="aibro.Comm">aibro.Comm</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#available_machines" class="toc-h2 toc-link" data-title="available_machines()">available_machines()</a>
+                  </li>
+                  <li>
+                    <a href="#send_message" class="toc-h2 toc-link" data-title="send_message()">send_message()</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cloud-instance" class="toc-h1 toc-link" data-title="Cloud Instance">Cloud Instance</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#spot-vs-on-demand-instance" class="toc-h2 toc-link" data-title="Spot Vs On-demand Instance">Spot Vs On-demand Instance</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#contact-us" class="toc-h1 toc-link" data-title="Contact Us">Contact Us</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#record-your-job" class="toc-h2 toc-link" data-title="Record your job">Record your job</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#data-privacy" class="toc-h1 toc-link" data-title="Data Privacy">Data Privacy</a>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://aipaca.ai'>Sign Up to Get Start</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <!-- ### HTTP Request
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+`GET http://example.com/api/kittens`
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+### Query Parameters
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+| Parameter    | Default | Description                                                                      |
+| ------------ | ------- | -------------------------------------------------------------------------------- |
+| include_cats | false   | If set to true, the result will also include cats.                               |
+| available    | true    | If set to false, the result will include kittens that have already been adopted. | -->
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
+<!-- <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+## Get a Specific Kitten
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+```ruby
+require 'kittn'
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.get(2)
+```
+
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.get(2)
+```
+
+```shell
+curl "http://example.com/api/kittens/2" \
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require("kittn");
+
+let api = kittn.authorize("meowmeowmeow");
+let max = api.kittens.get(2);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "name": "Max",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+This endpoint retrieves a specific kitten.
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+
+### HTTP Request
+
+`GET http://example.com/kittens/<ID>`
+
+### URL Parameters
+
+| Parameter | Description                      |
+| --------- | -------------------------------- |
+| ID        | The ID of the kitten to retrieve |
+
+## Delete a Specific Kitten
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.delete(2)
+```
+
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.delete(2)
+```
+
+```shell
+curl "http://example.com/api/kittens/2" \
+  -X DELETE \
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require("kittn");
+
+let api = kittn.authorize("meowmeowmeow");
+let max = api.kittens.delete(2);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "deleted": ":("
+}
+```
+
+This endpoint deletes a specific kitten.
+
+### HTTP Request
+
+`DELETE http://example.com/kittens/<ID>`
+
+### URL Parameters
+
+| Parameter | Description                    |
+| --------- | ------------------------------ |
+| ID        | The ID of the kitten to delete | -->
+<h1 id='introduction'>Introduction</h1>
+<p><strong>AIbro Version</strong>: 1.0.0 <span style="color:blue;">(alpha)</span></p>
+
+<p><strong>Last Documentation Update</strong>: Oct. 26, 2021</p>
+
+<p><strong>Definition</strong>: API embedded python library</p>
+
+<p>AIbro is a serverless model training tool that helps data scientists train AI models on cloud platforms with <a href="#step-3-the-magic-one-line-code">one line of code</a>.</p>
+<h2 id='support-environment'>Support Environment</h2>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Framework</th>
+<th>Version</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>Tensorflow</td>
+<td>&lt;= 2.5.1</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Cloud Platform</th>
+<th>Spot Instance</th>
+<th>On-demand Instance</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>AWS</td>
+<td>Yes</td>
+<td>Yes</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+
+<table><thead>
+<tr>
+<th>Training Data Type</th>
+<th>Maximum Data Size</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="https://numpy.org/">NumPy</a></td>
+<td>2 GB</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Limit</th>
+<th>Amount</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Max Active Jobs</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Max Active Instances</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Max Stopped Instances</td>
+<td>4</td>
+</tr>
+</tbody></table>
+
+<p>If more environment support is required, please feel free to <a href="#contact-us">Contact Us</a>.</p>
+
+<p>We are working hard to support more varieties of environments shortly. Thank you for your patience.</p>
+<h1 id='authentication'>Authentication</h1>
+<p>AIbro uses email &amp; password to allow access to the API. Accounts are registered at the AIbro <a href="https://aipaca.ai">website</a>.</p>
+
+<p>Authentication is required when APIs from <a href="https://pypi.org/project/aibro/">AIbro python library</a> are called for the first time.</p>
+<h1 id='start-first-training-job-on-aibro'>Start First Training Job on AIbro</h1>
+<aside class="success">
+Play around the executable Colab tutorial <a href = "https://colab.research.google.com/drive/19sXZ4kbic681zqEsrl_CZfB5cegUwuIB#forceEdit=true&sandboxMode=true&scrollTo=Et8ivBtkckme"> here</a>
 </aside>
+<h2 id='step-1-install'>Step 1: Install</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">aibro</span>
+</code></pre></div>
+<p>Install <a href="https://pypi.org/project/aibro/">aibro python library</a> by pip.</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>If <code>OSError: protocol not found</code> shows up, it is caused by missing <code>/etc/protocols</code> file. This command should be able to resolve the error: <code>sudo apt-get -o Dpkg::Options::=&quot;--force-confmiss&quot; install --reinstall netbase</code></p>
+<h2 id='step-2-prepare-model-amp-data'>Step 2: Prepare Model &amp; Data</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="k">def</span> <span class="nf">get_mnist_data</span><span class="p">():</span>
+    <span class="n">num_val_samples</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="c1"># Return the MNIST dataset in the form of a [`tf.data.Dataset`]
+</span>    <span class="c1"># reference: (https://www.tensorflow.org/api_docs/python/tf/data/Dataset).
+</span>    <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">datasets</span><span class="p">.</span><span class="n">mnist</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
+
+    <span class="c1"># Preprocess the data (these are Numpy arrays)
+</span>    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="s">"float32"</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+    <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="s">"float32"</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="s">"float32"</span><span class="p">)</span>
+    <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="s">"float32"</span><span class="p">)</span>
+
+    <span class="c1"># Reserve num_val_samples samples for validation
+</span>    <span class="n">x_val</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="o">-</span><span class="n">num_val_samples</span><span class="p">:]</span>
+    <span class="n">y_val</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="o">-</span><span class="n">num_val_samples</span><span class="p">:]</span>
+    <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[:</span><span class="o">-</span><span class="n">num_val_samples</span><span class="p">]</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="o">-</span><span class="n">num_val_samples</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span>
+
+
+<span class="k">def</span> <span class="nf">get_compiled_FFNN_model</span><span class="p">():</span>
+    <span class="c1"># Make a simple 2-layer densely-connected neural network.
+</span>    <span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span>
+        <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="p">.</span><span class="n">optimizers</span><span class="p">.</span><span class="n">Adam</span><span class="p">(),</span>
+        <span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="p">.</span><span class="n">losses</span><span class="p">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">keras</span><span class="p">.</span><span class="n">metrics</span><span class="p">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()],</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+
+<span class="n">train_X</span><span class="p">,</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">validation_X</span><span class="p">,</span> <span class="n">validation_Y</span> <span class="o">=</span> <span class="n">get_mnist_data</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">get_compiled_FFNN_model</span><span class="p">()</span>
+</code></pre></div>
+<p>As an example, we used a custom feed-forward neural network (FFNN) as the model and <a href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset">MNIST</a> dataset. You could plug in your own model and just remember to confirm the model&#39;s compilability with <a href="#support-environment">Support Environment</a>.</p>
+<h2 id='step-3-the-magic-one-line-code'>Step 3: The Magic One-Line Code</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">aibro</span> <span class="kn">import</span> <span class="n">Fit</span>
+
+<span class="n">job_id</span><span class="p">,</span> <span class="n">result_model</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span> <span class="n">Fit</span><span class="p">.</span><span class="n">online_fit</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">train_X</span><span class="o">=</span><span class="n">train_X</span><span class="p">,</span>
+    <span class="n">train_Y</span><span class="o">=</span><span class="n">train_Y</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">validation_X</span><span class="p">,</span> <span class="n">validation_Y</span><span class="p">),</span>
+    <span class="n">machine_ids</span><span class="o">=</span><span class="p">[</span><span class="s">"p2.xlarge.od"</span><span class="p">],</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s">"my first training job"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Now, it is the time to train the model on cloud with the <strong>one line of code</strong> - <code>Fit.online_fit()</code>.</p>
+
+<p>Once the job start, job status update will be displayed on the <a href="https://aipaca.ai/jobs">Jobs page of AIbro Console</a> in real-time.</p>
+
+<p>This example used a basic <code>online_fit()</code>. To explore more features, please check out the <a href="#aibro-fit">aibro.Fit</a> section.</p>
+<h1 id='aibro-fit'>aibro.Fit</h1><h2 id='online_fit'>online_fit()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">online_fit</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">,</span>
+    <span class="n">train_X</span><span class="p">:</span> <span class="n">numpy</span><span class="p">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">train_Y</span><span class="p">:</span> <span class="n">numpy</span><span class="p">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">machine_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span>
+    <span class="n">cool_down_period_s</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">fit_kwargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="n">directory_to_save_ckpt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">directory_to_save_log</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="n">wait_request_s</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">wait_new_job_create_s</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">wait_new_job_create_interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">record</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TF_Model</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">History</span><span class="p">]]</span>
+</code></pre></div>
+<p>Online fit is basically synchronize fit. Once it is called, model fitting progress will be shown in real time. We used
+the word &quot;online&quot; because it requires the internet stay in connection while training (offline_fit is coming soon).</p>
+
+<p>Every call of online fit will create a new training job unless the maximum limit of active jobs or instances per user is reached.</p>
+
+<p>When designing the parameters, we were trying to stay with the tensorflow style as close as possible.</p>
+<h3 id='parameters'>Parameters</h3>
+<p><strong>model</strong>: <em>tensorflow.keras.models.Model</em><br/>
+The machine learning model to be trained.</p>
+
+<p><strong>train_X</strong>: <em>numpy.ndarray</em><br/>
+The input training data feeding to model.</p>
+
+<p><strong>train_Y</strong>: <em>numpy.ndarray</em><br/>
+The output training data feeding to model.</p>
+
+<p><strong>machine_ids</strong>: <em>List[str] = None</em><br/>
+The cloud machines used to train the model. The machines are requested in the order of list; for example,
+in the case of <code>[&quot;p2.xlarge&quot;, &quot;g4dn.4xlarge&quot;]</code>, the API will try to request <code>p2.xlarge</code> first. If <code>p2.xlarge</code> is not available
+or has no capacity within <code>wait_request_s</code> seconds, <code>g4dn.4xlarge</code> will be requested next.</p>
+
+<p>If <code>machine_ids</code> is <code>None</code>, a select-action message will pop up.</p>
+
+<p><strong>batch_size</strong>: <em>int = 1</em><br/>
+The training batch size. It is recommended to set the value as the multiple of the number of GPUs (<a href="#distributed-training">more details</a>).</p>
+
+<p><strong>epochs</strong>: <em>int = 1</em><br/>
+The training epochs.</p>
+
+<p><strong>validation_data</strong>: <em>Tuple[np.array, np.array] = None</em><br/>
+The input and output validation data feeding to the model. The order is (validation_X, validation_Y).</p>
+
+<p><strong>description</strong>: <em>str = &quot;&quot;</em><br/>
+The description used to remind which training job was which. We highly recommend setting every job a unique
+description for easy lookup.</p>
+
+<p><strong>cool_down_period_s</strong>: <em>int = 0</em><br/>
+The time in seconds that an idle instance will be held before termination. <strong>This is an important concept</strong>.
+Please check out the <a href="#cooling-period">Cooling Period</a> section for more details.</p>
+
+<p><strong>fit_kwargs</strong>: <em>Dict[str, Any] = {}</em><br/>
+the arguments used to pass into model.fit().</p>
+
+<p><strong>directory_to_save_ckpt</strong>: <em>str = None</em><br/>
+The directory used to save checkpoints. Checkpoints are stored by per epoch. If <code>None</code>, the model checkpoint won&#39;t be saved in your local machine.</p>
+
+<p><strong>directory_to_save_log</strong>: <em>str = None</em><br/>
+The directory used to save tensorboard log. If <code>None</code>, the log file won&#39;t be saved in your local machine.
+current working directory.</p>
+
+<p><strong>wait_request_s</strong>: <em>int = 10000</em><br/>
+The time in seconds used to wait for instance request to be fulfilled. A long <code>wait_request_s</code> is helpful when requesting a spot instance with low availability.</p>
+
+<p><strong>wait_new_job_create_s</strong>: <em>int = -1</em><br/>
+The time in seconds used to wait for a new job to be created. This parameter is helpful when the maximum active jobs or instances is reached. It allows the new job to wait until one of the active jobs or instances are finished. If the value is non-positive, the new job will wait 99999999 seconds (basically forever).</p>
+
+<p><strong>wait_new_job_create_interval</strong>: <em>int = 10</em><br/>
+The time in seconds used to check whether there is a spot for the new job to be created.</p>
+
+<p><strong>record</strong>: <em>bool = False</em><br/>
+Turn on record mode to report issues. With record mode turned on, Our support team can easily reproduce issues. Before
+using the feature, we would recommend reading more details in the <a href="#report-issue">Report Issue</a> section and its
+<a href="#data-privacy">Privacy Items</a>.</p>
+<h2 id='cooling-period'>Cooling Period</h2>
+<p>The time in seconds that an idle instance will be held before termination. <strong>This is an important concept</strong>.</p>
+
+<p>To use cooling period, you should set <strong>cool_down_period_s</strong> non-zero and request the <strong>same machine_id</strong> in your next job, then AIbro will automatically pick up the same instance for the next job. Those instances are called <strong>cooling instances</strong>.</p>
+
+<p>The cooling period has the following benefit:</p>
+
+<ul>
+<li>Avoid environment gear up time (around 5-6 mins). When a new instance is requested, it takes over 5 mins to mount GPU and gear up tensorflow modules. On the other hand, cooling instances have no environment gear up time.</li>
+<li>Saving money. Environment gear up time would spend extra money.</li>
+</ul>
+
+<p>However, we don&#39;t really encourage users to set a long cooling period for spot instances as spot instances are not always available. The cooling period may impact the capacity of other users. Therefore, if a spot instance is held over a <code>BASELINE</code> period, its pricing would increment an <code>UNIT_PERCENTAGE</code> per minute. After <code>1/UNIT_PERCENTAGE</code> minutes, its price will reach a maximum, which is same as its on-demand price.</p>
+
+<p>In this version, the variables are set as the following:</p>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Variable</th>
+<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>BASELINE</td>
+<td>10 minutes</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>UNIT_PERCENTAGE</td>
+<td>1%</td>
+</tr>
+</tbody></table>
+<h2 id='distributed-training'>Distributed Training</h2>
+<p>If a multi-GPUs machine is selected (e.g. p3.8xlarge), AIbro automatically trains the model with all visible GPUs. We use <code>tf.distribute.MirroredStrategy</code> (<a href="https://www.tensorflow.org/api_docs/python/tf/distribute/MirroredStrategy">reference</a>) to implement synchronous training.</p>
+
+<p>MirroredStrategy evenly shards batch data to each GPU. To increase GPU utility, <strong>batch size</strong> should be set as the multiple of the number of GPUs. For instance such as p3.8xlarge, <code>batch_size</code> should be one of 4, 8, 16 ... because it has 4 V100 GPUs.</p>
+<h1 id='aibro-job'>aibro.Job</h1><h2 id='get_tensorboard_logs'>get_tensorboard_logs()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">get_tensorboard_logs</span><span class="p">(</span>
+    <span class="n">job_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s">"."</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>This method download Tensorboard logs by training job id. Use Tensorboard command such as <code>tensorboard --logdir logs</code> to open the board.</p>
+<h3 id='parameters'>Parameters</h3>
+<p><strong>job_id</strong>: <em>str</em><br/>
+Training job&#39;s ID.</p>
+
+<p><strong>directory</strong>: <em>str</em> = &quot;.&quot;<br/>
+Directory path to save the decoded Tensorboard log. The log path would be <code>{directory}/logs/{job_id}/</code>.</p>
+<h2 id='plot_timeline'>plot_timeline()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">plot_timeline</span><span class="p">(</span><span class="n">job_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">char_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">None</span><span class="p">)</span>
+</code></pre></div>
+<p>This method is used to interpret the time spend of a training job from end-to-end.</p>
+<h3 id='parameters-2'>Parameters</h3>
+<p><strong>job_id</strong>: <em>str</em><br/>
+The target Job&#39;s id.</p>
+
+<p><strong>char_type</strong>: <em>str</em> = None<br/>
+The type of chart. If its value is &quot;pie&quot;, a pie chart would be plotted. Otherwise, it is a funnel chart.</p>
+<h3 id='timeline'>Timeline</h3>
+<p>This method can be called anytime even if the job has not been ended.</p>
+
+<p>The timeline shows a little more insights than job status.</p>
+
+<p>From the beginning to the end, the following time periods are shown on timeline plots:</p>
+
+<ul>
+<li><strong>Job Create</strong>: time taken from code execution to job creation.</li>
+<li><strong>Request Launch</strong>: time taken from a spot request start to be fulfilled; this period only applies to spot instance.</li>
+<li><strong>Instance Connect</strong>: time taken from request fulfilled to successfully establish instance connection.</li>
+<li><strong>API Transfer &amp; Server Setup</strong>: time taken to set up AIbro API infrastructure in the instance.</li>
+<li><strong>M&amp;D Serialization</strong>: time taken to serialize model and training data.</li>
+<li><strong>Env Gear up</strong>: time taken to gear up tensorflow.</li>
+<li><strong>M&amp;D Transfer</strong>: time taken to transfer model and training data from your local machine to the instance.</li>
+<li><strong>M&amp;D Deserialization</strong>: time taken to deserialize model and training data.</li>
+<li><strong>Model Training</strong>: time taken to train the model.</li>
+<li><strong>Result Serialization</strong>: time taken to serialize the trained model and other relevant objects.</li>
+<li><strong>Result Transfer</strong>: time taken to transfer the trained model and other relevant objects.</li>
+</ul>
+
+<p><a href="https://aibro-user-timeline.s3.amazonaws.com/example/new_instance_timeline.html">Timeline Sample</a></p>
+<h2 id='replay_job'>replay_job()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">replay_job</span><span class="p">(</span>
+    <span class="n">job_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span>
+    <span class="n">directory_to_save_ckpt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">"."</span><span class="p">,</span>
+    <span class="n">directory_to_save_log</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">"."</span><span class="p">,</span>
+    <span class="n">wait_request_s</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Once a recorded job is submitted, AIbro team would use <em>replay_job()</em> method to reproduce the issue. You may also use it to check whether the reported issue is reproducible.</p>
+<h3 id='parameters-3'>Parameters</h3>
+<p><strong>job_id</strong>: <em>str</em><br/>
+The recorded job&#39;s id.</p>
+
+<p><strong>description</strong>: <em>str = &quot;&quot;</em><br/>
+The issue description. More details help us diagnose the issue easier.</p>
+
+<p><strong>directory_to_save_ckpt</strong>: <em>str = None</em><br/>
+The directory used to save checkpoints. Checkpoints are stored by per epoch. If <code>None</code>, the model checkpoint won&#39;t be saved in your local machine.</p>
+
+<p><strong>directory_to_save_log</strong>: <em>str = None</em><br/>
+The directory used to save tensorboard log. If <code>None</code>, the log file won&#39;t be saved in your local machine.</p>
+
+<p><strong>wait_request_s</strong>: <em>int = 10000</em><br/>
+The time in seconds used to wait instance request to be fulfilled. A long enough <code>wait_request_s</code> is helpful when
+requesting a spot instance with low availability.</p>
+<h2 id='job-amp-instance-status'>Job &amp; Instance Status</h2>
+<p>Once a job starts, its states and substates are updated on the <a href="https://aipaca.ai/jobs">Jobs page of AIbro Console</a>.</p>
+
+<table><thead>
+<tr>
+<th>Job Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>QUEUING</td>
+<td>Waiting for training</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>TRAINING</td>
+<td>During training process or returning training results</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>CANCELED</td>
+<td>Canceled due to some errors</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>COMPLETED</td>
+<td>Completed the job</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Job Substatus</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>REQUESTING SERVER</td>
+<td>Requesting an instance to train models</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td>CONNECTING SERVER</td>
+<td>Connecting an initializing instance</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>GEARING UP ENV</td>
+<td>Gearing up tensorflow and mounting GPUs</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>SENDING MODEL &amp; DATA</td>
+<td>Sending model and training data to the instance</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>TRAINING</td>
+<td>Training model</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>RETURNING</td>
+<td>Returning trained model</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>CANCELED</td>
+<td>Canceled due to some errors</td>
+</tr>
+<tr>
+<td>COMPLETED</td>
+<td>Completed the job</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Instance Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LAUNCHING</td>
+<td>Setting up instance for training</td>
+</tr>
+<tr>
+<td>EXECUTING</td>
+<td>Having jobs in training process</td>
+</tr>
+<tr>
+<td>COOLING</td>
+<td>Within <a href="#cooling-period">Cooling Period</a></td>
+</tr>
+<tr>
+<td>CLOSING</td>
+<td>Stopping/terminating instance</td>
+</tr>
+<tr>
+<td>CLOSED</td>
+<td>instance has been stopped/terminated</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Instance Substatus</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>STOPPING/STOPPED</td>
+<td>Shut down instance but retain root volume <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html">Reference</a></td>
+</tr>
+<tr>
+<td>TERMINATING/TERMINATED</td>
+<td>Completely delete the instance <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html">Reference</a></td>
+</tr>
+</tbody></table>
+
+<p>In the AIbro usage case, <a href="#setup-speed">Setup speed</a> is the main advantage of stopped instance over terminated instance.</p>
+
+<p>The following table is a status-substatus map of jobs and instances.</p>
+
+<table><thead>
+<tr>
+<th>Job Status</th>
+<th>Job Substatus</th>
+<th>Instance Status</th>
+<th>Instance Substatus</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>QUEUING</td>
+<td>REQUESTING SERVER</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>QUEUING</td>
+<td>CONNECTING SERVER</td>
+<td>LAUNCHING</td>
+<td></td>
+</tr>
+<tr>
+<td>QUEUING</td>
+<td>GEARING UP ENV</td>
+<td>LAUNCHING</td>
+<td></td>
+</tr>
+<tr>
+<td>QUEUING</td>
+<td>SENDING MODEL &amp; DATA</td>
+<td>LAUNCHING</td>
+<td></td>
+</tr>
+<tr>
+<td>----------</td>
+<td>------------</td>
+<td>----------------------</td>
+<td>--------------------------</td>
+</tr>
+<tr>
+<td>TRAINING</td>
+<td>TRAINING</td>
+<td>EXECUTING</td>
+<td></td>
+</tr>
+<tr>
+<td>TRAINING</td>
+<td>RETURNING</td>
+<td>EXECUTING</td>
+<td></td>
+</tr>
+<tr>
+<td>----------</td>
+<td>------------</td>
+<td>----------------------</td>
+<td>--------------------------</td>
+</tr>
+<tr>
+<td>CANCELED</td>
+<td>CANCELED</td>
+<td>COOLING/CLOSING/CLOSED</td>
+<td>COOLING/(STOPPING, TERMINATING)/(STOPPED, TERMINATED)</td>
+</tr>
+<tr>
+<td>COMPLETED</td>
+<td>COMPLETED</td>
+<td>COOLING/CLOSING/CLOSED</td>
+<td>COOLING/(STOPPING, TERMINATING)/(STOPPED, TERMINATED)</td>
+</tr>
+</tbody></table>
+<h1 id='aibro-comm'>aibro.Comm</h1><h2 id='available_machines'>available_machines()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">available_machines</span><span class="p">()</span>
+
+<span class="c1"># Sample Output:
+# Machine Id: g4dn.12xlarge  GPU Type: 4xT4     num_vCPU: 48    cost: 1.43      capacity: 2 availability: 32.0%
+# Machine Id: g4dn.12xlarge.od GPU Type: 4xT4     num_vCPU: 48    cost: 3.91      capacity: 3 availability: 100%
+# Machine Id: g4dn.16xlarge  GPU Type: 1xT4     num_vCPU: 64    cost: 1.31      capacity: 2 availability: 13.0%
+# Machine Id: g4dn.16xlarge.od GPU Type: 1xT4     num_vCPU: 64    cost: 4.35      capacity: 2 availability: 100%
+# Machine Id: g4dn.4xlarge   GPU Type: 1xT4     num_vCPU: 16    cost: 0.36      capacity: 8 availability: 86.0%
+</span></code></pre></div>
+<p>This method is used to grab machine information from the <a href="https://aipaca.ai/marketplace">AIbro Marketplace</a>.</p>
+
+<p>Two concepts in marketplace:</p>
+
+<ul>
+<li><strong>Capacity</strong>: the number of instances that are requestable.</li>
+<li><strong>Availability</strong>: the success probability of instance request.</li>
+</ul>
+<h2 id='send_message'>send_message()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span>
+    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">feedback_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s">"random"</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>This method sends feedback to AIbro support directly.</p>
+<h3 id='parameters'>Parameters</h3>
+<p><strong>email</strong>: <em>str</em><br/>
+Registered email address.</p>
+
+<p><strong>feedback_message</strong>: <em>str</em><br/>
+Anything you want to say to us.</p>
+
+<p><strong>category</strong>: <em>str</em> = &quot;random&quot;<br/>
+Category of the message. The category should be one of [&#39;random&#39;, &#39;feature_request&#39;, &#39;bug_report&#39;]</p>
+<h1 id='cloud-instance'>Cloud Instance</h1>
+<p>We will use the word &quot;machine&quot; and &quot;server&quot; interchangeably with &quot;instance&quot; in the following content.</p>
+<h2 id='spot-vs-on-demand-instance'>Spot Vs On-demand Instance</h2><h3 id='machine-id'>Machine id</h3>
+<p>By simply adding &quot;.od&quot; after machine id to convert instance type from spot to on-demand (e.g. <em>p2.xlarge</em> is spot and <em>p2.xlarge.od</em> is on-demand).</p>
+<h3 id='pricing'>Pricing</h3>
+<p>Spot instances are usually 70% cheaper than their corresponding on-demand instances.</p>
+
+<p><img src="https://drive.google.com/uc?export=view&amp;id=1G6fVuxUu8Yofj_SBxl57m_lFZ83L4MzE" alt="" />
+<img src="https://drive.google.com/uc?export=view&amp;id=1vomqhv0C7-ZjmwZ62dv3bjFJZtL2-wiT" alt="" /></p>
+<h3 id='availability'>Availability</h3>
+<p>As a tradeoff, spot instance requests are not always fulfilled. We defined the term <strong>&quot;availability&quot;</strong> as the success probability of
+instance request.</p>
+
+<p>Clearly, the availability of on-demand instances are always 100%. Therefore, it is guaranteed to get an on-demand instance as long as there is enough capacity in AIbro marketplace. With a small possibility, AWS can runs out of capacity itself, but it is not detectable until the request error occurs in jobs.</p>
+
+<p>The availabilities of spot instances is varied by instance types and request time. In general, we found more powerful
+instance types have less availability (e.g. p3.2xlarge is less available than p2.xlarge). Meanwhile, spot instances are
+usually more available during non-working hours.</p>
+<h3 id='reliability'>Reliability</h3>
+<p>Spot instances have a chance to be interrupted by AWS. On-demand instances are always stable.</p>
+<h3 id='setup-speed'>Setup Speed</h3>
+<p>The <strong><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html">stop</a></strong> feature allows on-demand instances to be set up faster than spot instances. For the first time a <strong>new</strong> instance was requested, tensorflow always needs around 5-7 minutes to gear up before training starts. Unlike spot instances that can only be <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html"><strong>terminated</strong></a>, on-demand instances are stoppable, which reduces their second-time gear up time to 0.5-1.5 minutes. Both instance types can set <a href="#cooling-period">Cooling Period</a>, which, of course, won&#39;t have any gear up time at all.</p>
+
+<p>Except for longer gear up time, a spot instance needs extra time to fulfill its request.</p>
+
+<p>The following table compares the job timelines (refer to <a href="#plot_timeline">plot_timeline()</a>) of new, stopped, and cooling instances when training the same model &amp; data on the same instance.</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>gear up time (minutes)</th>
+<th>timeline</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>new</td>
+<td>5-7</td>
+<td><a href="https://aibro-user-timeline.s3.amazonaws.com/example/new_instance_timeline.html">Timeline</a></td>
+</tr>
+<tr>
+<td>stopped</td>
+<td>0.5-1.5</td>
+<td><a href="https://aibro-user-timeline.s3.amazonaws.com/example/stopped_instance_timeline.html">Timeline</a></td>
+</tr>
+<tr>
+<td>cooling</td>
+<td>0</td>
+<td><a href="https://aibro-user-timeline.s3.amazonaws.com/example/cooling_server_timeline.html">Timeline</a></td>
+</tr>
+</tbody></table>
+<h1 id='contact-us'>Contact Us</h1>
+<p>You could reach out to us in one of the following ways:</p>
+
+<ol>
+<li><strong>Most recommend</strong>: <a href="https://join.slack.com/t/aipacainc/shared_invite/zt-s85idjfp-f~UwkvwuWi3TD1eTud4n5A">Slack Community</a> to direct message our support team</li>
+<li>Use the &quot;Contact Us&quot; button from our <a href="https://aipaca.ai">website</a></li>
+<li>Send message by <a href="#send_message"><code>aibro.Comm.send_message()</code></a></li>
+<li>Email us at <a href = "mailto: hello@aipaca.ai">hello@aipaca.ai</a></li>
+</ol>
+<h2 id='record-your-job'>Record your job</h2>
+<p>We would appreciate it if you turned on the record parameter in <a href="#online_fit">online_fit()</a> before reporting an issue. In recorded jobs, AIbro stores the model &amp; data to <a href="#replay_job">replay</a> the issue.</p>
+
+<p><em>Note: Even though AIpaca would only use the data for service improvement purposes only, &quot;record&quot; privacy items should be double checked so that it won&#39;t violate your or your agencies&#39; IP privacy. If need extra privacy protection is needed, please don&#39;t hesitate to contact us by one of the ways above. AIpaca team is always here to help you out.</em></p>
+<h1 id='data-privacy'>Data Privacy</h1>
+<p>While using every feature, AIbro needs data access at different levels. Usually, the more accesses a feature needs the better experience will be created (e.g. more time/money saving). Of course, whether using those features is totally upon your decision. By default, online_fit won&#39;t have any access. The following table gives a privacy item overview of each feature.</p>
+
+<table><thead>
+<tr>
+<th>Feature</th>
+<th>Server access</th>
+<th>Model Access</th>
+<th>Data Access</th>
+<th>Reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Cooling server</td>
+<td><strong>Yes</strong></td>
+<td>No</td>
+<td>No</td>
+<td>AIbro needs to retain the server access to reuse the cooling instances. The access will be permanently deleted once the instances is terminated</td>
+</tr>
+<tr>
+<td>Stopped server</td>
+<td><strong>Yes</strong></td>
+<td>No</td>
+<td>No</td>
+<td>AIbro needs to retain the server access to restart stopped instances. The access will be permanently deleted once the instances is terminated</td>
+</tr>
+<tr>
+<td>Report job</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+<td><strong>Yes</strong></td>
+<td>Support team needs the Model &amp; data to replay the job and diagnose the reported issues</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>

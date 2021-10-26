@@ -2,7 +2,7 @@
 
 **AIbro Version**: 1.0.0 <span style="color:blue;">(alpha)</span>
 
-**Last Documentation Update**: Oct. 16, 2021
+**Last Documentation Update**: Oct. 26, 2021
 
 **Definition**: API embedded python library
 
@@ -10,9 +10,9 @@ AIbro is a serverless model training tool that helps data scientists train AI mo
 
 ## Support Environment
 
-| Framework  | Version |
-| ---------- | ------- |
-| Tensorflow | 2       |
+| Framework  | Version  |
+| ---------- | -------- |
+| Tensorflow | <= 2.5.1 |
 
 | Cloud Platform | Spot Instance | On-demand Instance |
 | -------------- | ------------- | ------------------ |
@@ -24,9 +24,9 @@ AIbro is a serverless model training tool that helps data scientists train AI mo
 
 | Limit                 | Amount |
 | --------------------- | ------ |
-| Max Active Jobs       | 2      |
-| Max Active Instances  | 2      |
-| Max Stopped Instances | 2      |
+| Max Active Jobs       | 5      |
+| Max Active Instances  | 5      |
+| Max Stopped Instances | 4      |
 
 If more environment support is required, please feel free to [Contact Us](#contact-us).
 

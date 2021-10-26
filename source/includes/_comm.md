@@ -20,26 +20,6 @@ Two concepts in marketplace:
 - **Capacity**: the number of instances that are requestable.
 - **Availability**: the success probability of instance request.
 
-## open_tensorboard()
-
-```python
-def open_tensorboard(
-    path: str,
-    directory_to_save_log: str="."
-)
-```
-
-This method can open encoded Tensorboard logs from [Job Hisotry](https://aipaca.ai/jobs) and start a Tensorboard server.
-<img src="../images/download-tb-logs.png" />
-
-### Parameters
-
-**path**: _str_<br/>
-File path to the downloaded tensorboard log.
-
-**directory_to_save_log**: _str_ = "."<br/>
-File path to save the decoded tensorboard log.
-
 ## send_message()
 
 ```python
@@ -61,4 +41,4 @@ Registered email address.
 Anything you want to say to us.
 
 **category**: _str_ = "random"<br/>
-Category of the message. The category should be one of ['random', 'feature_request', 'bug report']
+Category of the message. The category should be one of ['random', 'feature_request', 'bug_report']

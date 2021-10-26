@@ -18,6 +18,8 @@ pip install aibro
 
 Install [aibro python library](https://pypi.org/project/aibro/) by pip.
 
+If `OSError: protocol not found` shows up, it is caused by missing `/etc/protocols` file. This command should be able to resolve the error: `sudo apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall netbase`
+
 ## Step 2: Prepare Model & Data
 
 ```python
@@ -75,7 +77,7 @@ job_id, result_model, history= Fit.online_fit(
     train_X=train_X,
     train_Y=train_Y,
     validation_data=(validation_X, validation_Y),
-    machine_ids["p2.xlarge", "p2.xlarge.od"], #try to get a spot p2.xlarge first, if failed, use its on-demand server
+    machine_ids=["p2.xlarge.od"],
     batch_size=8,
     epochs=15,
     description="my first training job",

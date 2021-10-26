@@ -1,5 +1,24 @@
 # aibro.Job
 
+## get_tensorboard_logs()
+
+```python
+def get_tensorboard_logs(
+    job_id: str,
+    directory: str="."
+)
+```
+
+This method download Tensorboard logs by training job id. Use Tensorboard command such as `tensorboard --logdir logs` to open the board.
+
+### Parameters
+
+**job_id**: _str_<br/>
+Training job's ID.
+
+**directory**: _str_ = "."<br/>
+Directory path to save the decoded Tensorboard log. The log path would be `{directory}/logs/{job_id}/`.
+
 ## plot_timeline()
 
 ```python

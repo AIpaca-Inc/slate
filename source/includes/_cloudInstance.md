@@ -12,6 +12,9 @@ By simply adding ".od" after machine id to convert instance type from spot to on
 
 Spot instances are usually 70% cheaper than their corresponding on-demand instances.
 
+![](https://drive.google.com/uc?export=view&id=1G6fVuxUu8Yofj_SBxl57m_lFZ83L4MzE)
+![](https://drive.google.com/uc?export=view&id=1vomqhv0C7-ZjmwZ62dv3bjFJZtL2-wiT)
+
 ### Availability
 
 As a tradeoff, spot instance requests are not always fulfilled. We defined the term **"availability"** as the success probability of

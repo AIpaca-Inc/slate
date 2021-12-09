@@ -1,10 +1,10 @@
-## Start The First Training Job on AIbro
+# Start The First Training Job on AIbro
 
 <aside class="success">
 Play around the executable Colab tutorial <a href = "https://colab.research.google.com/drive/19sXZ4kbic681zqEsrl_CZfB5cegUwuIB#forceEdit=true&sandboxMode=true&scrollTo=Et8ivBtkckme"> here</a>
 </aside>
 
-### Step 1: Install
+## Step 1: Install
 
 ```python
 pip install aibro
@@ -14,7 +14,7 @@ Install [aibro python library](https://pypi.org/project/aibro/) by pip.
 
 If `OSError: protocol not found` shows up, it is caused by missing `/etc/protocols` file. This command should be able to resolve the error: `sudo apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall netbase`
 
-### Step 2: Prepare model & data
+## Step 2: Prepare model & data
 
 ```python
 import tensorflow as tf
@@ -61,7 +61,7 @@ model = get_compiled_FFNN_model()
 
 As an example, we used a custom feed-forward neural network (FFNN) as the model and [MNIST](https://www.tensorflow.org/api_docs/python/tf/data/Dataset) dataset. You could plug in your own model and just remember to confirm the model's compilability with [Support Environment](#support-environment).
 
-### Step 3: Cloud training with one-line code
+## Step 3: Cloud training with one-line code
 
 ```python
 from aibro import Training

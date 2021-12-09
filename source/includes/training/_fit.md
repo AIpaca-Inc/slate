@@ -1,6 +1,6 @@
-# aibro.Fit
+## aibro.Training
 
-## online_fit()
+### online_fit()
 
 ```python
 def online_fit(
@@ -30,7 +30,7 @@ Every call of online fit will create a new training job unless the maximum limit
 
 When designing the parameters, we were trying to stay with the tensorflow style as close as possible.
 
-### Parameters
+#### Parameters
 
 **model**: _tensorflow.keras.models.Model_<br/>
 The machine learning model to be trained.
@@ -89,7 +89,7 @@ Turn on record mode to report issues. With record mode turned on, Our support te
 using the feature, we would recommend reading more details in the [Report Issue](#report-issue) section and its
 [Privacy Items](#data-privacy).
 
-## Cooling Period
+### Cooling Period
 
 The time in seconds that an idle instance will be held before termination. **This is an important concept**.
 
@@ -109,7 +109,7 @@ In this version, the variables are set as the following:
 | BASELINE        | 10 minutes |
 | UNIT_PERCENTAGE | 1%         |
 
-## Distributed Training
+### Distributed Training
 
 If a multi-GPUs machine is selected (e.g. p3.8xlarge), AIbro automatically trains the model with all visible GPUs. We use `tf.distribute.MirroredStrategy` ([reference](https://www.tensorflow.org/api_docs/python/tf/distribute/MirroredStrategy)) to implement synchronous training.
 

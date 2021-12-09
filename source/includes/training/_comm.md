@@ -1,6 +1,6 @@
-# aibro.Comm
+## aibro.Comm
 
-## available_machines()
+### available_machines()
 
 ```python
 def available_machines()
@@ -20,7 +20,7 @@ Two concepts in marketplace:
 - **Capacity**: the number of instances that are requestable.
 - **Availability**: the success probability of instance request.
 
-## send_message()
+### send_message()
 
 ```python
 def send_message(
@@ -32,7 +32,7 @@ def send_message(
 
 This method sends feedback to AIbro support directly.
 
-### Parameters
+#### Parameters
 
 **email**: _str_<br/>
 Registered email address.

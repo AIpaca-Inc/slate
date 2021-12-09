@@ -10,9 +10,15 @@ toc_footers:
 includes:
   - introduction
   - authentication
-  - fit
-  - job
-  - comm
+  - inference/header
+  - inference/startFirstInferenceJob
+  - inference/inference
+  - training/header
+  - training/supportEnv
+  - training/startFirstTrainingJob
+  - training/fit
+  - training/job
+  - training/comm
   - cloudInstance
   - reportIssue
   - privacy

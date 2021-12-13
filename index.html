@@ -283,9 +283,9 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-f2e6280a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-1d8a2b99.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-a9fde460.js"></script>
+      <script src="javascripts/all-c9c9fd69.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -310,35 +310,38 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#support-environment" class="toc-h2 toc-link" data-title="Support Environment">Support Environment</a>
-                  </li>
-              </ul>
+            <a href="#introduction-aibro-training" class="toc-h1 toc-link" data-title="Introduction - AIbro Training">Introduction - AIbro Training</a>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#start-first-training-job-on-aibro" class="toc-h1 toc-link" data-title="Start First Training Job on AIbro">Start First Training Job on AIbro</a>
+            <a href="#support-environment" class="toc-h1 toc-link" data-title="Support Environment">Support Environment</a>
+          </li>
+          <li>
+            <a href="#start-the-first-training-job-on-aibro" class="toc-h1 toc-link" data-title="Start The First Training Job on AIbro">Start The First Training Job on AIbro</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#step-1-install" class="toc-h2 toc-link" data-title="Step 1: Install">Step 1: Install</a>
                   </li>
                   <li>
-                    <a href="#step-2-prepare-model-amp-data" class="toc-h2 toc-link" data-title="Step 2: Prepare Model &amp; Data">Step 2: Prepare Model &amp; Data</a>
+                    <a href="#step-2-prepare-model-amp-data" class="toc-h2 toc-link" data-title="Step 2: Prepare model &amp; data">Step 2: Prepare model &amp; data</a>
                   </li>
                   <li>
-                    <a href="#step-3-the-magic-one-line-code" class="toc-h2 toc-link" data-title="Step 3: The Magic One-Line Code">Step 3: The Magic One-Line Code</a>
+                    <a href="#step-3-cloud-training-with-one-line-code" class="toc-h2 toc-link" data-title="Step 3: Cloud training with one-line code">Step 3: Cloud training with one-line code</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#aibro-fit" class="toc-h1 toc-link" data-title="aibro.Fit">aibro.Fit</a>
+            <a href="#aibro-training" class="toc-h1 toc-link" data-title="aibro.Training">aibro.Training</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#online_fit" class="toc-h2 toc-link" data-title="online_fit()">online_fit()</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#parameters" class="toc-h3 toc-link" data-title="Parameters">Parameters</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
                     <a href="#cooling-period" class="toc-h2 toc-link" data-title="Cooling Period">Cooling Period</a>
@@ -353,15 +356,36 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get_tensorboard_logs" class="toc-h2 toc-link" data-title="get_tensorboard_logs()">get_tensorboard_logs()</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#parameters" class="toc-h3 toc-link" data-title="Parameters">Parameters</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
                     <a href="#plot_timeline" class="toc-h2 toc-link" data-title="plot_timeline()">plot_timeline()</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#parameters-2" class="toc-h3 toc-link" data-title="Parameters">Parameters</a>
+                          </li>
+                          <li>
+                            <a href="#timeline" class="toc-h3 toc-link" data-title="Timeline">Timeline</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
                     <a href="#replay_job" class="toc-h2 toc-link" data-title="replay_job()">replay_job()</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#record-your-job" class="toc-h3 toc-link" data-title="Record your job">Record your job</a>
+                          </li>
+                          <li>
+                            <a href="#parameters-3" class="toc-h3 toc-link" data-title="Parameters">Parameters</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#job-amp-instance-status" class="toc-h2 toc-link" data-title="Job &amp; Instance Status">Job &amp; Instance Status</a>
+                    <a href="#training-job-amp-instance-status" class="toc-h2 toc-link" data-title="Training Job &amp; Instance Status">Training Job &amp; Instance Status</a>
                   </li>
               </ul>
           </li>
@@ -373,6 +397,11 @@
                   </li>
                   <li>
                     <a href="#send_message" class="toc-h2 toc-link" data-title="send_message()">send_message()</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#parameters" class="toc-h3 toc-link" data-title="Parameters">Parameters</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -381,16 +410,28 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#spot-vs-on-demand-instance" class="toc-h2 toc-link" data-title="Spot Vs On-demand Instance">Spot Vs On-demand Instance</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#machine-id" class="toc-h3 toc-link" data-title="Machine id">Machine id</a>
+                          </li>
+                          <li>
+                            <a href="#pricing" class="toc-h3 toc-link" data-title="Pricing">Pricing</a>
+                          </li>
+                          <li>
+                            <a href="#availability" class="toc-h3 toc-link" data-title="Availability">Availability</a>
+                          </li>
+                          <li>
+                            <a href="#reliability" class="toc-h3 toc-link" data-title="Reliability">Reliability</a>
+                          </li>
+                          <li>
+                            <a href="#setup-speed" class="toc-h3 toc-link" data-title="Setup Speed">Setup Speed</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#contact-us" class="toc-h1 toc-link" data-title="Contact Us">Contact Us</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#record-your-job" class="toc-h2 toc-link" data-title="Record your job">Record your job</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#data-privacy" class="toc-h1 toc-link" data-title="Data Privacy">Data Privacy</a>
@@ -521,15 +562,19 @@ This endpoint deletes a specific kitten.
 | Parameter | Description                    |
 | --------- | ------------------------------ |
 | ID        | The ID of the kitten to delete | -->
-<h1 id='introduction'>Introduction</h1>
+<h1 id='introduction-aibro-training'>Introduction - AIbro Training</h1>
 <p><strong>AIbro Version</strong>: 1.0.0 <span style="color:blue;">(alpha)</span></p>
 
-<p><strong>Last Documentation Update</strong>: Oct. 26, 2021</p>
+<p><strong>Last Documentation Update</strong>: Dec. 9, 2021</p>
 
 <p><strong>Definition</strong>: API embedded python library</p>
 
-<p>AIbro is a serverless model training tool that helps data scientists train AI models on cloud platforms with <a href="#step-3-the-magic-one-line-code">one line of code</a>.</p>
-<h2 id='support-environment'>Support Environment</h2>
+<p>AIbro is a serverless MLOps tool that helps data scientists train &amp; inference AI models on cloud platforms in <a href="#step-3-the-magic-one-line-code">2 minutes</a>.</p>
+<h1 id='authentication'>Authentication</h1>
+<p>AIbro uses email &amp; password to allow access to the API. Accounts are registered at the AIbro <a href="https://aipaca.ai">website</a>.</p>
+
+<p>Authentication is required when APIs from <a href="https://pypi.org/project/aibro/">AIbro python library</a> are called for the first time.</p>
+<h1 id='support-environment'>Support Environment</h1>
 <table><thead>
 <tr>
 <th>Framework</th>
@@ -591,11 +636,7 @@ This endpoint deletes a specific kitten.
 <p>If more environment support is required, please feel free to <a href="#contact-us">Contact Us</a>.</p>
 
 <p>We are working hard to support more varieties of environments shortly. Thank you for your patience.</p>
-<h1 id='authentication'>Authentication</h1>
-<p>AIbro uses email &amp; password to allow access to the API. Accounts are registered at the AIbro <a href="https://aipaca.ai">website</a>.</p>
-
-<p>Authentication is required when APIs from <a href="https://pypi.org/project/aibro/">AIbro python library</a> are called for the first time.</p>
-<h1 id='start-first-training-job-on-aibro'>Start First Training Job on AIbro</h1>
+<h1 id='start-the-first-training-job-on-aibro'>Start The First Training Job on AIbro</h1>
 <aside class="success">
 Play around the executable Colab tutorial <a href = "https://colab.research.google.com/drive/19sXZ4kbic681zqEsrl_CZfB5cegUwuIB#forceEdit=true&sandboxMode=true&scrollTo=Et8ivBtkckme"> here</a>
 </aside>
@@ -604,7 +645,7 @@ Play around the executable Colab tutorial <a href = "https://colab.research.goog
 <p>Install <a href="https://pypi.org/project/aibro/">aibro python library</a> by pip.</p>
 
 <p>If <code>OSError: protocol not found</code> shows up, it is caused by missing <code>/etc/protocols</code> file. This command should be able to resolve the error: <code>sudo apt-get -o Dpkg::Options::=&quot;--force-confmiss&quot; install --reinstall netbase</code></p>
-<h2 id='step-2-prepare-model-amp-data'>Step 2: Prepare Model &amp; Data</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<h2 id='step-2-prepare-model-amp-data'>Step 2: Prepare model &amp; data</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="k">def</span> <span class="nf">get_mnist_data</span><span class="p">():</span>
     <span class="n">num_val_samples</span> <span class="o">=</span> <span class="mi">100</span>
@@ -646,9 +687,9 @@ Play around the executable Colab tutorial <a href = "https://colab.research.goog
 <span class="n">model</span> <span class="o">=</span> <span class="n">get_compiled_FFNN_model</span><span class="p">()</span>
 </code></pre></div>
 <p>As an example, we used a custom feed-forward neural network (FFNN) as the model and <a href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset">MNIST</a> dataset. You could plug in your own model and just remember to confirm the model&#39;s compilability with <a href="#support-environment">Support Environment</a>.</p>
-<h2 id='step-3-the-magic-one-line-code'>Step 3: The Magic One-Line Code</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">aibro</span> <span class="kn">import</span> <span class="n">Fit</span>
+<h2 id='step-3-cloud-training-with-one-line-code'>Step 3: Cloud training with one-line code</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">aibro</span> <span class="kn">import</span> <span class="n">Training</span>
 
-<span class="n">job_id</span><span class="p">,</span> <span class="n">result_model</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span> <span class="n">Fit</span><span class="p">.</span><span class="n">online_fit</span><span class="p">(</span>
+<span class="n">job_id</span><span class="p">,</span> <span class="n">result_model</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span> <span class="n">Training</span><span class="p">.</span><span class="n">online_fit</span><span class="p">(</span>
     <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
     <span class="n">train_X</span><span class="o">=</span><span class="n">train_X</span><span class="p">,</span>
     <span class="n">train_Y</span><span class="o">=</span><span class="n">train_Y</span><span class="p">,</span>
@@ -659,12 +700,12 @@ Play around the executable Colab tutorial <a href = "https://colab.research.goog
     <span class="n">description</span><span class="o">=</span><span class="s">"my first training job"</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>Now, it is the time to train the model on cloud with the <strong>one line of code</strong> - <code>Fit.online_fit()</code>.</p>
+<p>Now, it is the time to train the model on cloud with the <strong>one line of code</strong> - <code>Training.online_fit()</code>.</p>
 
 <p>Once the job start, job status update will be displayed on the <a href="https://aipaca.ai/jobs">Jobs page of AIbro Console</a> in real-time.</p>
 
-<p>This example used a basic <code>online_fit()</code>. To explore more features, please check out the <a href="#aibro-fit">aibro.Fit</a> section.</p>
-<h1 id='aibro-fit'>aibro.Fit</h1><h2 id='online_fit'>online_fit()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">online_fit</span><span class="p">(</span>
+<p>This example used a basic <code>online_fit()</code>. To explore more features, please check out the <a href="#aibro-fit">aibro.Training</a> section.</p>
+<h1 id='aibro-training'>aibro.Training</h1><h2 id='online_fit'>online_fit()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">online_fit</span><span class="p">(</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">tensorflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">,</span>
     <span class="n">train_X</span><span class="p">:</span> <span class="n">numpy</span><span class="p">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">train_Y</span><span class="p">:</span> <span class="n">numpy</span><span class="p">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -833,6 +874,10 @@ The type of chart. If its value is &quot;pie&quot;, a pie chart would be plotted
 <span class="p">)</span>
 </code></pre></div>
 <p>Once a recorded job is submitted, AIbro team would use <em>replay_job()</em> method to reproduce the issue. You may also use it to check whether the reported issue is reproducible.</p>
+<h3 id='record-your-job'>Record your job</h3>
+<p>We would appreciate it if you turned on the record parameter in <a href="#online_fit">online_fit()</a> before reporting an issue. In recorded jobs, AIbro stores the model &amp; data to <a href="#replay_job">replay</a> the issue.</p>
+
+<p><em>Note: Even though AIpaca would only use the data for service improvement purposes only, &quot;record&quot; privacy items should be double checked so that it won&#39;t violate your or your agencies&#39; IP privacy. If need extra privacy protection is needed, please don&#39;t hesitate to contact us by one of the ways above. AIpaca team is always here to help you out.</em></p>
 <h3 id='parameters-3'>Parameters</h3>
 <p><strong>job_id</strong>: <em>str</em><br/>
 The recorded job&#39;s id.</p>
@@ -849,7 +894,7 @@ The directory used to save tensorboard log. If <code>None</code>, the log file w
 <p><strong>wait_request_s</strong>: <em>int = 10000</em><br/>
 The time in seconds used to wait instance request to be fulfilled. A long enough <code>wait_request_s</code> is helpful when
 requesting a spot instance with low availability.</p>
-<h2 id='job-amp-instance-status'>Job &amp; Instance Status</h2>
+<h2 id='training-job-amp-instance-status'>Training Job &amp; Instance Status</h2>
 <p>Once a job starts, its states and substates are updated on the <a href="https://aipaca.ai/jobs">Jobs page of AIbro Console</a>.</p>
 
 <table><thead>
@@ -1125,10 +1170,6 @@ usually more available during non-working hours.</p>
 <li>Send message by <a href="#send_message"><code>aibro.Comm.send_message()</code></a></li>
 <li>Email us at <a href = "mailto: hello@aipaca.ai">hello@aipaca.ai</a></li>
 </ol>
-<h2 id='record-your-job'>Record your job</h2>
-<p>We would appreciate it if you turned on the record parameter in <a href="#online_fit">online_fit()</a> before reporting an issue. In recorded jobs, AIbro stores the model &amp; data to <a href="#replay_job">replay</a> the issue.</p>
-
-<p><em>Note: Even though AIpaca would only use the data for service improvement purposes only, &quot;record&quot; privacy items should be double checked so that it won&#39;t violate your or your agencies&#39; IP privacy. If need extra privacy protection is needed, please don&#39;t hesitate to contact us by one of the ways above. AIpaca team is always here to help you out.</em></p>
 <h1 id='data-privacy'>Data Privacy</h1>
 <p>While using every feature, AIbro needs data access at different levels. Usually, the more accesses a feature needs the better experience will be created (e.g. more time/money saving). Of course, whether using those features is totally upon your decision. By default, online_fit won&#39;t have any access. The following table gives a privacy item overview of each feature.</p>
 

@@ -1,9 +1,11 @@
-# Introduction
+# Introduction - AIbro Training
 
-**AIbro Version**: 1.0.0 <span style="color:blue;">(alpha)</span>
+**AIbro Version**: 1.1.0 <span style="color:blue;">(alpha)</span>
 
-**Last Documentation Update**: Oct. 26, 2021
+**Last Documentation Update**: Dec. 12, 2021
 
 **Definition**: API embedded python library
 
-AIbro is a serverless model training tool that helps data scientists train AI models on cloud platforms with [one line of code](#step-3-the-magic-one-line-code).
+AIbro is a serverless MLOps tool that helps data scientists train & inference AI models on cloud platforms in 2 minutes.
+
+This document focuses on cloud **training**. If you are also interested in inference, here is the [inference document link](https://doc.aipaca.ai/inference).

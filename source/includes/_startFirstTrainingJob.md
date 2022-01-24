@@ -64,7 +64,7 @@ As an example, we used a custom feed-forward neural network (FFNN) as the model 
 ## Step 3: Cloud training with one-line code
 
 ```python
-from aibro import Training
+from aibro.training import Training
 
 job_id, result_model, history= Training.online_fit(
     model=model,

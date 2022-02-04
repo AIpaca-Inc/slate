@@ -316,7 +316,7 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#support-environment" class="toc-h1 toc-link" data-title="Support Environment">Support Environment</a>
+            <a href="#supported-environment" class="toc-h1 toc-link" data-title="Supported Environment">Supported Environment</a>
           </li>
           <li>
             <a href="#start-the-first-training-job-on-aibro" class="toc-h1 toc-link" data-title="Start The First Training Job on AIbro">Start The First Training Job on AIbro</a>
@@ -575,15 +575,15 @@ This endpoint deletes a specific kitten.
 <h1 id='authentication'>Authentication</h1>
 <p>Authentication is required when Aibro APIs are called for the first time.</p>
 
-<p>Albro allows one of the following two ways to authenticate:</p>
+<p>Aibro allows one of the following two ways to authenticate:</p>
 
 <ul>
-<li>Access token (<strong>recommend</strong>): This is supplied using a series of characters prefixed by &quot;secret_...&quot;, and can be found in the Aibro Console on the <a href="https://aipaca.ai/humming">humming page</a>.</li>
+<li>Access token (<strong>recommended</strong>): This is supplied using a series of characters prefixed by &quot;secret_...&quot;, and can be found in the Aibro Console on the <a href="https://aipaca.ai/humming">humming page</a>.</li>
 <li>Email &amp; password: These credentials are the same that were used to register on the <a href="https://aipaca.ai">AIbro website</a>.</li>
 </ul>
 
 <p><em>ps: &quot;humming&quot; is literally how an alpaca &quot;greets&quot; people</em>😉</p>
-<h1 id='support-environment'>Support Environment</h1>
+<h1 id='supported-environment'>Supported Environment</h1>
 <table><thead>
 <tr>
 <th>Framework</th>
@@ -695,7 +695,7 @@ Play around the executable Colab tutorial <a href = "https://colab.research.goog
 <span class="n">train_X</span><span class="p">,</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">validation_X</span><span class="p">,</span> <span class="n">validation_Y</span> <span class="o">=</span> <span class="n">get_mnist_data</span><span class="p">()</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">get_compiled_FFNN_model</span><span class="p">()</span>
 </code></pre></div>
-<p>As an example, we used a custom feed-forward neural network (FFNN) as the model, and the data from a <a href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset">MNIST</a> dataset. If you choose an alternative model, please remember to confirm the model&#39;s compilability with the <a href="#support-environment">Support Environment</a>.</p>
+<p>As an example, we used a custom feed-forward neural network (FFNN) as the model, and the data from a <a href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset">MNIST</a> dataset. If you choose an alternative model, please remember to confirm the model&#39;s compilability with the <a href="#supported-environment">Supported Environment</a>.</p>
 <h2 id='step-3-cloud-training-with-one-line-code'>Step 3: Cloud training with one-line code</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">aibro.training</span> <span class="kn">import</span> <span class="n">Training</span>
 
 <span class="n">job_id</span><span class="p">,</span> <span class="n">result_model</span><span class="p">,</span> <span class="n">history</span><span class="o">=</span> <span class="n">Training</span><span class="p">.</span><span class="n">online_fit</span><span class="p">(</span>
@@ -712,7 +712,7 @@ Play around the executable Colab tutorial <a href = "https://colab.research.goog
 <p>After the model has been prepared, it is now time to train the model on the cloud. This is done using <strong>a single line of code:</strong>
 <code>Training.online_fit()</code>.</p>
 
-<p>Once the job begins, job status updates will be displayed on the <a href="https://aipaca.ai/jobs">Jobs page of AIbro Console</a> in real-time.</p>
+<p>Once the job begins, job status updates will be displayed on the <a href="https://aipaca.ai/training_jobs">Jobs page of AIbro Console</a> in real-time.</p>
 
 <p>This example uses the basic <code>online_fit()</code> method for training. To explore more features, please refer to the <a href="#aibro-training">aibro.training</a> section.</p>
 <h1 id='aibro-training'>aibro.training</h1><h2 id='online_fit'>online_fit()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">online_fit</span><span class="p">(</span>
@@ -792,7 +792,7 @@ This parameter is used to turn record mode on or off, which can be helpful for t
 <h2 id='cooling-period'>Cooling Period</h2>
 <p>The cooling period refers to the number of seconds that an idle instance will be held before termination. <strong>This is an important concept that should be carefully considered to maximize efficiency and minimize cost.</strong></p>
 
-<p>To use cooling period, you should set the <code>cool_down_period_s</code> parameter to non-zero and request the same <code>machine_id</code> in your next job. Following this, Albro will automatically pick up the same instance for the next job. These are referred to as <strong>cooling instances</strong>.</p>
+<p>To use cooling period, you should set the <code>cool_down_period_s</code> parameter to non-zero and request the same <code>machine_id</code> in your next job. Following this, Aibro will automatically pick up the same instance for the next job. These are referred to as <strong>cooling instances</strong>.</p>
 
 <p>The cooling period has the following benefits:</p>
 
@@ -822,7 +822,7 @@ modules. On the other hand, cooling instances have no environment gear-up time.<
 </tr>
 </tbody></table>
 <h2 id='distributed-training'>Distributed Training</h2>
-<p>If a multi-GPU machine is selected (e.g. p3.8xlarge), Albro automatically trains the model with all available GPUs. Aibro uses TensortFlow’s <code>tf.distribute.MirroredStrategy</code> (<a href="https://www.tensorflow.org/api_docs/python/tf/distribute/MirroredStrategy">reference</a>) to implement synchronous training.</p>
+<p>If a multi-GPU machine is selected (e.g. p3.8xlarge), Aibro automatically trains the model with all available GPUs. Aibro uses TensortFlow’s <code>tf.distribute.MirroredStrategy</code> (<a href="https://www.tensorflow.org/api_docs/python/tf/distribute/MirroredStrategy">reference</a>) to implement synchronous training.</p>
 
 <p>MirroredStrategy evenly shards batch data to each GPU. To increase GPU utility, the <strong>batch size</strong> should be set to a multiple of the number of GPUs. For instance, using a <code>p3.8xlarge</code>, the <code>batch_size</code> should be set to one of 4, 8, 16, etc, because it has 4 V100 GPUs.</p>
 <h1 id='aibro-job'>aibro.job</h1><h2 id='get_tensorboard_logs'>get_tensorboard_logs()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">get_tensorboard_logs</span><span class="p">(</span>
@@ -857,7 +857,7 @@ This refers to the type of chart to be used for the plot. If its value is <code>
 <li><strong>Job Create</strong>: This refers to the time spent between code execution and job creation.</li>
 <li><strong>Request Launch</strong>: This is the time between a spot request start and when it is fulfilled. This period only applies to spot instances.</li>
 <li><strong>Instance Connect</strong>: This period refers to the time after a request has been fulfilled to successfully establish an instance connection.</li>
-<li><strong>API Transfer &amp; Server Setup</strong>: This is the time taken to set up the Albro API infrastructure in the instance.</li>
+<li><strong>API Transfer &amp; Server Setup</strong>: This is the time taken to set up the Aibro API infrastructure in the instance.</li>
 <li><strong>M&amp;D Serialization</strong>: This refers to the time used to serialize the model and training data.</li>
 <li><strong>Env Gear up</strong>: This refers to the time spent to gear-up TensorFlow.</li>
 <li><strong>M&amp;D Transfer</strong>: This refers to the time taken to transfer the model and training data from your local machine to the instance.</li>
@@ -880,9 +880,9 @@ This refers to the type of chart to be used for the plot. If its value is <code>
 
 <p>In advance of sending the job to the Aibro support team, the <code>replay_job()</code> method can be employed to determine whether the reported issue is reproducible.</p>
 <h3 id='record-your-job'>Record your job</h3>
-<p>The Aibro team would appreciate it if you turned on the record parameter in <a href="#online_fit">online_fit()</a> before reporting an issue. In recorded jobs, Albro stores the model &amp; data to required to <a href="#replay_job">replay</a> the issue.</p>
+<p>The Aibro team would appreciate it if you turned on the record parameter in <a href="#online_fit">online_fit()</a> before reporting an issue. In recorded jobs, Aibro stores the model &amp; data required to <a href="#replay_job">replay</a> the issue.</p>
 
-<p><em>Note: Even though Aipaca only uses such data for service improvement purposes, &quot;record&quot; privacy items should be double-checked prior to sending the support team a recorded job. This is necessary to avoid violating the IP privacy of yourself or your agency. If extra privacy protection is needed, please do not hesitate to contact us by one of the ways above. Privacy is something we the Aipaca team takes seriously and is always here to help.</em></p>
+<p><em>Note: Even though Aipaca only uses such data for service improvement purposes, &quot;record&quot; privacy items should be double-checked prior to sending the support team a recorded job. This is necessary to avoid violating the IP privacy of yourself or your agency. If extra privacy protection is needed, please do not hesitate to contact us by one of the ways above. Privacy is something the Aipaca team takes seriously and is always here to help.</em></p>
 <h3 id='parameters-3'>Parameters</h3>
 <p><strong>job_id</strong>: <em>str</em><br/>
 This parameter specifies the recorded job&#39;s ID.</p>
@@ -891,7 +891,7 @@ This parameter specifies the recorded job&#39;s ID.</p>
 This is a textual description of the issue. Details included here will assist with diagnosing and resolving the issue.</p>
 
 <p><strong>directory_to_save_ckpt</strong>: <em>str = None</em><br/>
-This parameter specifies the directory used to save checkpoints in your local machine. Checkpoints are stored by per epoch. If the parameter is set to <code>None</code>, the model checkpoints will not be saved in the local machine.</p>
+This parameter specifies the directory used to save checkpoints in your local machine. Checkpoints are stored per epoch. If the parameter is set to <code>None</code>, the model checkpoints will not be saved in the local machine.</p>
 
 <p><strong>directory_to_save_log</strong>: <em>str = None</em><br/>
 This parameter indicates which e directory should be used to save the TensorBoard log file. If set to <code>None</code>, the log file will not be saved on the your local machine.</p>
@@ -899,7 +899,7 @@ This parameter indicates which e directory should be used to save the TensorBoar
 <p><strong>wait_request_s</strong>: <em>int = 10000</em><br/>
 This parameter specifies the number of seconds that Aibro will wait for instance requests to be fulfilled. A long <code>wait_request_s</code> is helpful when requesting a spot instance with low availability.</p>
 <h2 id='training-job-amp-instance-status'>Training Job &amp; Instance Status</h2>
-<p>Once a job starts, its states and substates are updated on the <a href="https://aipaca.ai/jobs">Jobs page within the Albro Console</a>.</p>
+<p>Once a job starts, its states and substates are updated on the <a href="https://aipaca.ai/training_jobs">Jobs page within the Aibro Console</a>.</p>
 
 <table><thead>
 <tr>
@@ -1009,7 +1009,7 @@ This parameter specifies the number of seconds that Aibro will wait for instance
 </tr>
 </tbody></table>
 
-<p>In the AIbro usage case, <a href="#setup-speed">Setup speed</a> is the main advantage of stopped instance over terminated instance.</p>
+<p>In the AIbro usage case, <a href="#setup-speed">Setup speed</a> is the main advantage of using a stopped instance over a terminated instance.</p>
 
 <p>The following table is a status-substatus map of jobs and instances.</p>
 
@@ -1097,7 +1097,7 @@ This parameter specifies the number of seconds that Aibro will wait for instance
 
 <ul>
 <li><strong>Capacity</strong>: This refers to the number of instances that are requestable.</li>
-<li><strong>Availability</strong>: The available is the success probability of an instance request.</li>
+<li><strong>Availability</strong>: This refers to the success probability of an instance request.</li>
 </ul>
 <h2 id='send_message'>send_message()</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span>
     <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
